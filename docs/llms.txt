@@ -1,0 +1,76 @@
+# FlexPortal
+
+## Docs
+
+- [Create Asset](https://docs.flexportal.io/api-reference/assets/create.md): Registers a new device/asset in inventory. Each asset is identified by a unique serial number. Assets start as "available" and can be assigned to subscriptions during order fulfillment.
+- [Delete Asset](https://docs.flexportal.io/api-reference/assets/delete.md): Soft deletes an asset by setting status to unavailable.
+- [Get Asset](https://docs.flexportal.io/api-reference/assets/get.md): Retrieves a specific asset by serial number.
+- [List Assets](https://docs.flexportal.io/api-reference/assets/list.md): Returns a paginated list of assets in inventory.
+- [Update Asset](https://docs.flexportal.io/api-reference/assets/update.md)
+- [Create Billing Group](https://docs.flexportal.io/api-reference/billing-groups/create.md): Creates a new billing group for consolidated B2B billing. Groups multiple subscriptions under one customer for a single monthly invoice. All subscriptions in the group are billed on the same day each month.
+- [Delete Billing Group](https://docs.flexportal.io/api-reference/billing-groups/delete.md): Deletes a billing group. Rentals are moved back to individual billing.
+- [Get Billing Group](https://docs.flexportal.io/api-reference/billing-groups/get.md): Retrieves a specific billing group by ID.
+- [List Billing Groups](https://docs.flexportal.io/api-reference/billing-groups/list.md): Returns a list of billing groups for consolidated B2B billing.
+- [Update Billing Group](https://docs.flexportal.io/api-reference/billing-groups/update.md): Updates billing group settings. Can add/remove rentals, change billing day, or update name.
+- [Delete Customer](https://docs.flexportal.io/api-reference/customers/delete.md): Soft deletes a customer by setting status to inactive.
+- [Get Customer](https://docs.flexportal.io/api-reference/customers/get.md): Retrieves a specific customer by ID.
+- [List Customers](https://docs.flexportal.io/api-reference/customers/list.md): Returns a paginated list of customers.
+- [Update Customer](https://docs.flexportal.io/api-reference/customers/update.md): Updates customer details such as name, phone, or addresses.
+- [Export Subscriptions](https://docs.flexportal.io/api-reference/exports/rentals.md): Exports rental/subscription data to CSV format with optional date range and field filtering.
+- [Delete File](https://docs.flexportal.io/api-reference/files/delete.md): Deletes a file record and optionally removes from storage.
+- [Generate Contract](https://docs.flexportal.io/api-reference/files/generate-contract.md): Generates a PDF contract for an order using tenant-configured templates.
+- [Get File](https://docs.flexportal.io/api-reference/files/get.md): Retrieves metadata for a specific file. Does not return the file content.
+- [List Files](https://docs.flexportal.io/api-reference/files/list.md): Returns a list of files with optional filtering by order or type.
+- [Get File URL](https://docs.flexportal.io/api-reference/files/url.md): Generates a signed URL for viewing or downloading a file. URLs expire after the specified time.
+- [Cancel Order](https://docs.flexportal.io/api-reference/orders/cancel.md): Cancels a pending order. Cannot cancel orders that have fulfilled subscriptions.
+- [Create Order](https://docs.flexportal.io/api-reference/orders/create.md): Creates a new subscription order for a customer. The order goes through validation, pricing calculation, and customer lookup/creation. If no customer exists with the provided email, one is automatically created.
+- [Get Order](https://docs.flexportal.io/api-reference/orders/get.md): Retrieves a specific order by ID.
+- [List Orders](https://docs.flexportal.io/api-reference/orders/list.md): Returns a paginated list of orders.
+- [Update Order Notes](https://docs.flexportal.io/api-reference/orders/notes.md): Updates the notes field on an order.
+- [API Overview](https://docs.flexportal.io/api-reference/overview.md): Authentication, headers, pagination, and everything you need to integrate with FlexPortal
+- [Cancel Payment](https://docs.flexportal.io/api-reference/payments/cancel.md): Cancels a pending payment. Cannot cancel already paid or processing payments.
+- [Get Payment](https://docs.flexportal.io/api-reference/payments/get.md): Retrieves a specific payment by ID.
+- [List Payments](https://docs.flexportal.io/api-reference/payments/list.md): Returns a paginated list of payments with optional filtering by status, customer, or rental.
+- [Mark Payment Paid](https://docs.flexportal.io/api-reference/payments/mark-paid.md): Manually marks a payment as paid. Use for offline payments (check, wire transfer, cash).
+- [Create Product](https://docs.flexportal.io/api-reference/products/create.md): Creates a new product with its variants. Uses upsert logic - will update if product SKU already exists. Products can have multiple variants representing different conditions/grades, each with their own pricing tiers for different contract lengths.
+- [Delete Product](https://docs.flexportal.io/api-reference/products/delete.md): Soft deletes a product by setting status to discontinued. Also deactivates all associated variants.
+- [Get Product](https://docs.flexportal.io/api-reference/products/get.md): Retrieves a specific product by ID, including its variants.
+- [Import Products CSV](https://docs.flexportal.io/api-reference/products/import-csv.md): Bulk import products and variants from a CSV file. Supports up to ~500 products per request.
+- [List Products](https://docs.flexportal.io/api-reference/products/list.md): Returns a paginated list of products in your catalog.
+- [Update Product](https://docs.flexportal.io/api-reference/products/update.md): Updates an existing product and its variants.
+- [List Variants](https://docs.flexportal.io/api-reference/products/variants.md): Returns all product variants. Useful for building pricing tables or dropdowns.
+- [Buyout Subscription](https://docs.flexportal.io/api-reference/subscriptions/buyout.md): Customer purchases the device, ending the subscription.
+- [Calculate Buyout Price](https://docs.flexportal.io/api-reference/subscriptions/calculate-buyout.md): Calculates the buyout price for a subscription without performing the buyout.
+- [Calculate Early Return Fee](https://docs.flexportal.io/api-reference/subscriptions/calculate-early-return.md): Calculates the early return fee for a subscription without performing the return.
+- [Cancel Subscription](https://docs.flexportal.io/api-reference/subscriptions/cancel.md): Cancels an active subscription. Use when customer wants to end subscription without returning device immediately.
+- [Create Subscription](https://docs.flexportal.io/api-reference/subscriptions/create.md): Creates a new subscription by assigning a specific asset (device) to a customer from an order. This is the order fulfillment step - it links a physical device (by serial number) to a line item in an order, creating an active subscription.
+- [Early Return](https://docs.flexportal.io/api-reference/subscriptions/early-return.md): Customer returns the device before contract end. May incur early return fees.
+- [Extend Subscription](https://docs.flexportal.io/api-reference/subscriptions/extend.md): Extends the subscription contract length.
+- [Get Subscription](https://docs.flexportal.io/api-reference/subscriptions/get.md): Retrieves a specific subscription by ID.
+- [List Subscriptions](https://docs.flexportal.io/api-reference/subscriptions/list.md): Returns a paginated list of subscriptions.
+- [Update Subscription Notes](https://docs.flexportal.io/api-reference/subscriptions/notes.md): Updates the notes field on a subscription.
+- [Replace Device](https://docs.flexportal.io/api-reference/subscriptions/replace.md): Replaces the device on a subscription (e.g., for warranty or damage).
+- [Upgrade Subscription](https://docs.flexportal.io/api-reference/subscriptions/upgrade.md): Upgrades the customer to a better device. Creates a new subscription and ends the current one.
+- [Product Updates](https://docs.flexportal.io/changelog/overview.md): Latest updates and improvements to FlexPortal
+- [Integrations](https://docs.flexportal.io/integrations/overview.md): Connect FlexPortal with your existing tools and workflows
+- [Shopify Integration](https://docs.flexportal.io/integrations/shopify.md): Sync products and capture subscription orders from your Shopify store
+- [Stripe Integration](https://docs.flexportal.io/integrations/stripe.md): Automated recurring payments with Stripe
+- [Introduction](https://docs.flexportal.io/introduction.md): Turn physical products into recurring revenue with FlexPortal
+- [Managing Assets](https://docs.flexportal.io/operations/assets.md): Track and manage physical inventory
+- [Managing Customers](https://docs.flexportal.io/operations/customers.md): Track customer information and relationships
+- [Managing Orders](https://docs.flexportal.io/operations/orders.md): Create and manage customer orders in FlexPortal
+- [Managing Payments](https://docs.flexportal.io/operations/payments.md): Handle recurring billing and payment collection
+- [Managing Products](https://docs.flexportal.io/operations/products.md): Create and manage products in your catalog
+- [Settings](https://docs.flexportal.io/operations/settings.md): Configure your FlexPortal organization and Business Units
+- [Managing Subscriptions](https://docs.flexportal.io/operations/subscriptions.md): Handle active subscriptions and their lifecycle
+- [Business Units](https://docs.flexportal.io/platform/business-units.md): Multi-tenant architecture for different markets, brands, or business lines
+- [Cost Recovery & Profitability](https://docs.flexportal.io/platform/cost-recovery.md): Track real profitability per asset with margin analysis, breakeven calculations, and portfolio health
+- [Platform Overview](https://docs.flexportal.io/platform/overview.md): Understand FlexPortal architecture and how core entities work together
+- [Subscription Lifecycle](https://docs.flexportal.io/platform/subscription-lifecycle.md): From order placement to contract completion
+- [Quickstart](https://docs.flexportal.io/quickstart.md): Create your first subscription in 10 minutes
+- [Frequently Asked Questions](https://docs.flexportal.io/resources/faq.md): Common questions about FlexPortal
+- [Glossary](https://docs.flexportal.io/resources/glossary.md): Key terms and definitions for FlexPortal
+
+## OpenAPI Specs
+
+- [openapi](https://docs.flexportal.io/openapi.json)
